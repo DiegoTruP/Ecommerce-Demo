@@ -19,14 +19,14 @@ public class OrderServiceImpl implements OrderService{
 	OrderDao orderDao;
 
 	@Override
-	public void addOrder(Cart cart) {
+	public OrderProduct addOrder(Cart cart) {
 		OrderProduct order =new OrderProduct();
 //		if(order != null) {
 //			addProduct(cart.getUserId(),cart.getProductList());
 //		}else {
 			order.setUserId(cart.getUserId());
 			order.setProductList(cart.getProductList());
-			orderDao.addOrder(order);
+			return orderDao.addOrder(order);
 //		}
 		
 	}

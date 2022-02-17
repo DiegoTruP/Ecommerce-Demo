@@ -8,7 +8,7 @@ import com.java.training.entity.Product;
 
 public interface OrderService {
 	
-	public void addOrder(Cart cart);
+	public OrderProduct addOrder(Cart cart);
 	public OrderProduct getOrderByUserId(Integer userId);
 	public List<OrderProduct> getOrders(Integer userId);
 	public OrderProduct getOrderByOrderId(Integer orderId);

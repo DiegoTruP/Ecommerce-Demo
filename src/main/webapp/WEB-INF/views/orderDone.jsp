@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Orders</title>
+<title>Order completed</title>
 </head>
 <body>
 
@@ -59,41 +59,42 @@
       text-align:center;
     }
 </style>
-
-<h3>Your orders</h3>
-
+<h2>Order completed successfully</h2>
+<h3>Order ID: ${order.getOrderId()}</h3>
+<h3>Date: ${order.getDate()}</h3>
 
 
  <table class="tableContainer">
     <tr class="top">
-    	<th>Order ID</th>
-    	<th>Date</th>
+    	<th>Product name</th>
+    	<th>Product category</th>
+    	<th>Price</th>
+    	<th>Quantity</th>
     	<th>Total</th>
-    	<th></th>
     </tr>
 
-
-    <c:forEach items="${orderList}" var="order">
-
+    
+    <c:forEach items="${orderList}" var="prod">
+ 
     	<tr class="product">
-    		<td class="product">${order.getOrderId()}</td>
-    		<td class="product">${order.getDate()}</td>
-    		<td class="product">${order.getTotal()}</td>
-    		<td class="product">
-    			<a href="/training/viewOrder/${order.getOrderId()}">View</a>
-    		</td>
+    		<td class="product">${prod.productName}</td>
+    		<td class="product">${prod.productCategory}</td>
+    		<td class="product">${prod.productPrice}</td>
+    		<td class="product">${prod.productQuantity}</td>
+    		<td class="product">$${prod.productQuantity * prod.productPrice}</td>
     	</tr>
     	
+
     </c:forEach>
     
 <!--       <tfoot>  </tfoot> -->
-<!--         <tr> -->
-<!--         	<td></td> -->
-<!--         	<td></td> -->
-<!--         	<td></td> -->
-<!--         	<td></td> -->
-<!--             <td style="border-top:2px solid; text-align:center;" >$${order.getTotal()}</td> -->
-<!--         </tr> -->
+        <tr>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+        	<td></td>
+            <td style="border-top:2px solid; text-align:center;" >$${order.getTotal()}</td>
+        </tr>
         
         <tr>
 <%--     		<td><form action=/training/back method="get" modelAttribute="user"> --%>
@@ -118,6 +119,8 @@
     
 
     </table>
+    
+    <h3>Thanks for your purchase</h3>
 
 </body>
 </html>

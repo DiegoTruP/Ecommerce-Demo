@@ -88,10 +88,11 @@ public class ProductController {
 	
 	
 	@RequestMapping(value="/discountProduct")
-	public String discountProducts(Model model,@ModelAttribute("cart") Cart cart,RedirectAttributes redirect) {
+	public String discountProducts(Model model,@ModelAttribute("cart") Cart cart,@ModelAttribute("orderId") Integer orderId, RedirectAttributes redirect) {
 		
 		productService.discountProducts(cart.getProductList());
-		redirect.addAttribute("user", cart.getUserId());
+		redirect.addFlashAttribute("user", cart.getUserId());
+		redirect.addFlashAttribute("orderId", orderId);
 		
 		return "redirect:deleteCart";
 	}

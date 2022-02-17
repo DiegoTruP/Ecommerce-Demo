@@ -17,7 +17,7 @@ public class OrderDaoImpl implements OrderDao {
 	static Integer counter=0;
 
 	@Override
-	public void addOrder(OrderProduct order) {
+	public OrderProduct addOrder(OrderProduct order) {
 		counter++;
 		order.setOrderId(counter);
 		double total = 0;
@@ -27,6 +27,7 @@ public class OrderDaoImpl implements OrderDao {
 		order.setTotal(total);
 		order.setDate(LocalDate.now());
 		orderList.add(order);
+		return order;
 	}
 
 	@Override

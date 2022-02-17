@@ -41,10 +41,11 @@ public class CartController {
 	}
 	
 	@RequestMapping(value="/deleteCart")
-	public String deleteCart(Model model,@RequestParam("user") Integer user, RedirectAttributes redirect) {
+	public String deleteCart(Model model,@ModelAttribute("user") Integer user,@ModelAttribute("orderId") Integer orderId, RedirectAttributes redirect) {
 		cartService.deleteCart(user);
-		redirect.addAttribute("user", user);
-		return "redirect:getProducts";
+		redirect.addFlashAttribute("user", user);
+		redirect.addFlashAttribute("orderId", orderId);
+		return "redirect:orderDone";
 	}
 	
 	@RequestMapping(value="/viewCart/{userId}", method = RequestMethod.GET)

@@ -32,9 +32,26 @@ public class OrderController {
 	
 	@RequestMapping(value="/order", method = RequestMethod.GET)
 	public String buyCart(Model model,@ModelAttribute("cart") Cart cart, RedirectAttributes redirect) {
-		orderService.addOrder(cart);
+		OrderProduct order = orderService.addOrder(cart);
 		redirect.addFlashAttribute("cart", cart);
+		redirect.addFlashAttribute("orderId",order.getOrderId());
 		return"redirect:discountProduct";
+	}
+	
+	@RequestMapping(value="/orderDone")
+	public String orderDone(Model model,@ModelAttribute("orderId") Integer orderId) {
+		OrderProduct order = orderService.getOrderByOrderId(orderId);
+		
+		List<Product> orderList = order.getProductList();//get list of products of an specified order
+		
+		Map<String, List> list = new HashMap<String,List>();//Cart list to show the products
+		list.put("orderList", orderList);
+		
+		model.addAllAttributes(list);
+		model.addAttribute("userId", order.getUserId());
+		model.addAttribute("order",order);
+		
+		return "orderDone";
 	}
 	
 	@RequestMapping(value="/back")

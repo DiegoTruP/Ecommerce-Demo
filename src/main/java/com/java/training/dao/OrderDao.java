@@ -6,7 +6,7 @@ import com.java.training.entity.OrderProduct;
 import com.java.training.entity.Product;
 
 public interface OrderDao {
-	public void addOrder(OrderProduct order);
+	public OrderProduct addOrder(OrderProduct order);
 	public OrderProduct getOrder(Integer userId);
 	public List<OrderProduct> getOrderList(Integer userId);
 }

@@ -16,6 +16,7 @@
     }
     body{
       background-color: white;
+      text-align:center;
     }  
     th{
       padding: 10px;
@@ -47,6 +48,8 @@
       border-collapse: collapse;
       margin-top: 20px;
       width:80%;
+      margin-left:auto;
+      margin-right:auto;
     }
 
     td.product{
